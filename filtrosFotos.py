@@ -153,6 +153,15 @@ def detectorBordes(imagen):
         print("-Completado!")
         return imgTmp
 
+def cambiarNombre(nombre,agregar):
+    temp=""
+    for letra in nombre:
+        if letra==".":
+            temp+=agregar+letra
+        else:
+            temp+=letra
+    return temp
+
 """
     Funcion principal del programa
 """
@@ -182,7 +191,7 @@ def main():
                     imgTmp=blurGaussiano(nombreImg,radio,1)
                     entrada=input(">Desea guardar la foto con el efecto aplicado? (y/n): ")
                     if entrada=="y" or entrada=="Y":
-                        misc.imsave('blurred_'+nombreImg, imgTmp)
+                        misc.imsave(cambiarNombre(nombreImg,'_blurred'), imgTmp)
                     entrada=input(">Desea ver la imagen resultado? (y/n): ")
                     if entrada=="y" or entrada=="Y":
                         plt.imshow(imgTmp,interpolation='nearest')
@@ -195,7 +204,7 @@ def main():
                     imgTmp=detectorBordes(nombreImg)
                     entrada=input(">Desea guardar la foto con el efecto aplicado? (y/n): ")
                     if entrada=="y" or entrada=="Y":
-                        misc.imsave('edge_'+nombreImg, imgTmp)
+                        misc.imsave(cambiarNombre(nombreImg,'_edge'), imgTmp)
                     entrada=input(">Desea ver la imagen resultado? (y/n): ")
                     if entrada=="y" or entrada=="Y":
                         plt.imshow(imgTmp,interpolation='nearest')
