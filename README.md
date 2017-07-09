@@ -1,4 +1,5 @@
 # photoFilters
 Filtros para imagenes utilizando Numpy y Scipy para Python
-\n
-He
+# Requerimientos
+Paquete Anaconda instalado y Python 3.6
+
