@@ -153,6 +153,9 @@ def detectorBordes(imagen):
         print("-Completado!")
         return imgTmp
 
+"""
+    Funcion para agregar la terminacion a las fotos
+"""
 def cambiarNombre(nombre,agregar):
     temp=""
     for letra in nombre:
@@ -192,10 +195,16 @@ def main():
                     entrada=input(">Desea guardar la foto con el efecto aplicado? (y/n): ")
                     if entrada=="y" or entrada=="Y":
                         misc.imsave(cambiarNombre(nombreImg,'_blurred'), imgTmp)
+                        print("-Imagen guardada: "+cambiarNombre(nombreImg,'_blurred'))
                     entrada=input(">Desea ver la imagen resultado? (y/n): ")
                     if entrada=="y" or entrada=="Y":
-                        plt.imshow(imgTmp,interpolation='nearest')
-                        plt.show()
+                        if len(imgTmp.shape)==2:
+                            plt.imshow(imgTmp,interpolation='nearest')
+                            plt.gray()
+                            plt.show()
+                        else:
+                            plt.imshow(imgTmp,interpolation='nearest')
+                            plt.show()
                 except:
                     print("Error: Imagen no encontrada.")
             elif entrada==2:
@@ -205,6 +214,7 @@ def main():
                     entrada=input(">Desea guardar la foto con el efecto aplicado? (y/n): ")
                     if entrada=="y" or entrada=="Y":
                         misc.imsave(cambiarNombre(nombreImg,'_edge'), imgTmp)
+                        print("-Imagen guardada: "+cambiarNombre(nombreImg,'_edge'))
                     entrada=input(">Desea ver la imagen resultado? (y/n): ")
                     if entrada=="y" or entrada=="Y":
                         plt.imshow(imgTmp,interpolation='nearest')
